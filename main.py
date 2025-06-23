@@ -26,7 +26,8 @@ if st.button("Generate Image"):
     if description:
         with st.spinner('Generating image...'):
             image_bytes = query({"inputs": description})
-            image = Image.open(io.BytesIO(image_bytes))
+           # image = Image.open(io.BytesIO(image_bytes))
+            image = image.open(https://huggingface.co/spaces/YUFI-API/BytesIOtoBase64)
             st.image(image, caption=description)
     else:
         st.warning("Please enter a description.")
