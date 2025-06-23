@@ -26,6 +26,16 @@ if st.button("Generate Image"):
     if description:
         with st.spinner('Generating image...'):
             image_bytes = query({"inputs": description})
+if uploaded_file is not None:
+    image_bytes = uploaded_file.read()
+    print(len(image_bytes))  # Debug to see if file is empty
+# Validate that it's an image
+    import imghdr
+    if imghdr.what(None, image_bytes) is None:
+        st.error("That file is not a valid image!")
+    else:
+        image = Image.open(io.BytesIO(image_bytes))
+        st.image(image)
            # image = Image.open(io.BytesIO(image_bytes))
             image = image.open(https://huggingface.co/spaces/YUFI-API/BytesIOtoBase64)
             st.image(image, caption=description)
